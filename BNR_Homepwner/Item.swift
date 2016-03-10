@@ -14,6 +14,8 @@ class Item: NSObject {
     var serialNumber: String?
     let dateCreated: NSDate
     
+    // MARK: - Designated Initializer
+    
     init(name: String, valueInDollars: Int, serialNumber: String?) {
         self.name = name
         self.valueInDollars = valueInDollars
@@ -22,6 +24,8 @@ class Item: NSObject {
         
         super.init()
     }
+    
+    // MARK: - Convenience Initializer 
     
     convenience init(random: Bool = false) {
         if random {
