@@ -11,7 +11,7 @@ import UIKit
 class ItemsTableViewController: UITableViewController {
     var itemStore: ItemStore!
     
-    // MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource Methods
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemStore.allItems.count
@@ -27,5 +27,17 @@ class ItemsTableViewController: UITableViewController {
         cell.textLabel?.text = item.name
         cell.detailTextLabel?.text = "$\(item.valueInDollars)"
         return cell
+    }
+    
+    // MARK: - UIViewController Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+        
+        let customInsets = UIEdgeInsets(top: statusBarHeight, left: 0.0, bottom: 0.0, right: 0.0)
+        self.tableView.contentInset = customInsets
+        self.tableView.scrollIndicatorInsets = customInsets
     }
 }
