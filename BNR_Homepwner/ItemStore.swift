@@ -18,4 +18,10 @@ class ItemStore {
         allItems.append(newItem)
         return newItem
     }
+    
+    func deleteItem(item: Item) {
+        if let validIndexOfItem = self.allItems.indexOf(item) {
+            self.allItems.removeAtIndex(validIndexOfItem)
+        }
+    }
 }
