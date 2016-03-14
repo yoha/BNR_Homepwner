@@ -17,7 +17,11 @@ class ItemsTableViewController: UITableViewController {
     // MARK: - IBAction Methods
     
     @IBAction func addNewItem(sender: UIButton) {
-        
+        let newItem = self.itemStore.createItem()
+        if let validIndexOfNewItem = self.itemStore.allItems.indexOf(newItem) {
+            let indexPathOfNewItem = NSIndexPath(forRow: validIndexOfNewItem, inSection: 0)
+            self.tableView.insertRowsAtIndexPaths([indexPathOfNewItem], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
     
     @IBAction func toggleEditingMode(sender: UIButton) {
