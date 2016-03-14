@@ -14,10 +14,17 @@ class ItemsTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource Methods
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.itemStore.allItems.count
+        return self.itemStore.allItems.count + 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // Create custom cell just to display "no more item" on the last line
+        if indexPath.row == self.itemStore.allItems.count {
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+            cell.textLabel?.text = "No more item"
+            cell.detailTextLabel?.text = ""
+            return cell
+        }
         // Get a new or recycled cell
         let cell = self.tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
         
