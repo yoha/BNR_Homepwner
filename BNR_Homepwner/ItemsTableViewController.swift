@@ -38,12 +38,18 @@ class ItemsTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource Methods
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.itemStore.allItems.count
+        return self.itemStore.allItems.count + 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Get a new or recycled cell
         let cell = self.tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+
+        if indexPath.row == self.itemStore.allItems.count {
+            cell.textLabel?.text = "No more item!"
+            cell.detailTextLabel?.text = ""
+            return cell
+        }
         
         // Set the text on the cell w/ the description of the item that is at the nth index of items, where n = row this cell will appear in on the tableview
         let item = self.itemStore.allItems[indexPath.row]
@@ -71,6 +77,10 @@ class ItemsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         self.itemStore.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return indexPath.row == self.itemStore.allItems.count ? false : true
     }
     
     // MARK: - UIViewController Methods
