@@ -83,6 +83,17 @@ class ItemsTableViewController: UITableViewController {
         return indexPath.row == self.itemStore.allItems.count ? false : true
     }
     
+    // MARK: - UITableViewDelegate Methods
+    
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+        if proposedDestinationIndexPath.row == self.itemStore.allItems.count {
+            return sourceIndexPath
+        }
+        else {
+            return proposedDestinationIndexPath
+        }
+    }
+    
     // MARK: - UIViewController Methods
     
     override func viewDidLoad() {
