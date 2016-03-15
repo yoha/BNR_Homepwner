@@ -86,12 +86,7 @@ class ItemsTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate Methods
     
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-        if proposedDestinationIndexPath.row == self.itemStore.allItems.count {
-            return sourceIndexPath
-        }
-        else {
-            return proposedDestinationIndexPath
-        }
+        return proposedDestinationIndexPath.row == self.itemStore.allItems.count ? sourceIndexPath : proposedDestinationIndexPath
     }
     
     // MARK: - UIViewController Methods
