@@ -79,6 +79,11 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="hrA-Rc-Dca" secondAttribute="trailing" id="ues-gq-yqA"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="zoB-dh-ugz" id="Qsg-Uw-bKB"/>
+                                    <outlet property="serialNumberLabel" destination="bNI-9Y-E7v" id="DO9-HJ-spH"/>
+                                    <outlet property="valueLabel" destination="hrA-Rc-Dca" id="gpV-r5-2vV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

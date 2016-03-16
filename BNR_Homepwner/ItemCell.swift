@@ -10,4 +10,10 @@ import UIKit
 
 class ItemCell: UITableViewCell {
     
+    // MARK: - IBOutlet Properties
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var serialNumberLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    
 }
