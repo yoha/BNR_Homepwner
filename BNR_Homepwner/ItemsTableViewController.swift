@@ -43,19 +43,22 @@ class ItemsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Get a new or recycled cell
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("ItemCell") as! ItemCell
 
         if indexPath.row == self.itemStore.allItems.count {
-            cell.textLabel?.text = "No more item!"
-            cell.detailTextLabel?.text = ""
+            cell.nameLabel.text = "No more item!"
+            cell.serialNumberLabel.text = ""
+            cell.valueLabel.text = ""
+            
             return cell
         }
         
         // Set the text on the cell w/ the description of the item that is at the nth index of items, where n = row this cell will appear in on the tableview
         let item = self.itemStore.allItems[indexPath.row]
         
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = "$\(item.valueInDollars)"
         
         return cell
     }
@@ -99,5 +102,7 @@ class ItemsTableViewController: UITableViewController {
         let customInsets = UIEdgeInsets(top: statusBarHeight, left: 0.0, bottom: 0.0, right: 0.0)
         self.tableView.contentInset = customInsets
         self.tableView.scrollIndicatorInsets = customInsets
+        
+        self.tableView.rowHeight = 65
     }
 }
