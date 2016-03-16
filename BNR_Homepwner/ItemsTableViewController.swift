@@ -42,8 +42,9 @@ class ItemsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Get a new or recycled cell
         let cell = self.tableView.dequeueReusableCellWithIdentifier("ItemCell") as! ItemCell
+        
+        cell.refreshLabelsFonts()
 
         if indexPath.row == self.itemStore.allItems.count {
             cell.nameLabel.text = "No more item!"
@@ -53,7 +54,6 @@ class ItemsTableViewController: UITableViewController {
             return cell
         }
         
-        // Set the text on the cell w/ the description of the item that is at the nth index of items, where n = row this cell will appear in on the tableview
         let item = self.itemStore.allItems[indexPath.row]
         
         cell.nameLabel.text = item.name
