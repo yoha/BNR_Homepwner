@@ -26,4 +26,8 @@ class ItemCell: UITableViewCell {
         let fontTextStyleCaption1 = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
         self.serialNumberLabel.font = fontTextStyleCaption1
     }
+    
+    func updateValueLabelColor(value: Int) {
+        valueLabel.textColor = value >= 50 ? UIColor.redColor() : UIColor.greenColor()
+    }
 }

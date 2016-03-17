@@ -59,6 +59,7 @@ class ItemsTableViewController: UITableViewController {
         cell.nameLabel.text = item.name
         cell.serialNumberLabel.text = item.serialNumber
         cell.valueLabel.text = "$\(item.valueInDollars)"
+        cell.updateValueLabelColor(item.valueInDollars)
         
         return cell
     }
