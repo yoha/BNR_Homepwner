@@ -98,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="545" y="510"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="dl5-FD-HA2">
             <objects>
-                <viewController id="QcT-SW-UqH" sceneMemberID="viewController">
+                <viewController id="QcT-SW-UqH" customClass="DetailViewController" customModule="BNR_Homepwner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ExD-oA-JYI"/>
                         <viewControllerLayoutGuide type="bottom" id="hGK-6A-say"/>
@@ -148,13 +148,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VPE-33-kYv">
                                         <rect key="frame" x="0.0" y="76" width="560" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa1-S9-ywe">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa1-S9-ywe">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sR-ok-t89">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sR-ok-t89">
                                                 <rect key="frame" x="53" y="0.0" width="507" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -182,6 +182,12 @@
                             <constraint firstItem="bnt-VG-pWL" firstAttribute="top" secondItem="ExD-oA-JYI" secondAttribute="bottom" constant="8" id="sci-GD-scA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="m1H-BP-9bT" id="c4Q-HV-18D"/>
+                        <outlet property="nameTextField" destination="oI4-rx-C8K" id="8kV-Hj-DdM"/>
+                        <outlet property="serialNumberTextField" destination="qe8-B4-Tbi" id="Se9-bV-QvR"/>
+                        <outlet property="valueTextField" destination="1sR-ok-t89" id="qke-gJ-LKl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOE-jY-Y4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
