@@ -50,6 +50,7 @@ class ItemsTableViewController: UITableViewController {
             cell.nameLabel.text = "No more item!"
             cell.serialNumberLabel.text = ""
             cell.valueLabel.text = ""
+            cell.userInteractionEnabled = false
             
             return cell
         }
@@ -106,5 +107,13 @@ class ItemsTableViewController: UITableViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 65
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard segue.identifier == "segueToDetailViewController" else { return }
+        guard let tappedRow = self.tableView.indexPathForSelectedRow?.row else { return }
+        let associatedItem = self.itemStore.allItems[tappedRow]
+        guard let validDetailViewController = segue.destinationViewController as? DetailViewController else { return }
+        validDetailViewController.item = associatedItem
     }
 }
