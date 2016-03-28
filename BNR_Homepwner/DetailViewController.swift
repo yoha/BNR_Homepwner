@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlet Properties
     
@@ -16,6 +16,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var serialNumberTextField: UITextField!
     @IBOutlet weak var valueTextField: UITextField!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    // MARK: - IBAction Methods
+    
+    @IBAction func backgroundDidTouch(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
     
     // MARK: - Stored Properties
     
@@ -40,6 +46,14 @@ class DetailViewController: UIViewController {
     
     // MARK: - UIViewController Properties
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.nameTextField.delegate = self
+        self.serialNumberTextField.delegate = self
+        self.valueTextField.delegate = self
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -59,6 +73,14 @@ class DetailViewController: UIViewController {
             return
         }
         self.item.valueInDollars = value.integerValue
+        
+        self.view.endEditing(true)
     }
     
+    // MARK: - UITextFieldDelegate Methods
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
