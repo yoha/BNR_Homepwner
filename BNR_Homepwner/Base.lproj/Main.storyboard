@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Items Table View Controller-->
+        <!--Homepwner-->
         <scene sceneID="pwj-lf-eL0">
             <objects>
                 <tableViewController id="cOm-84-g6I" customClass="ItemsTableViewController" customModule="BNR_Homepwner" customModuleProvider="target" sceneMemberID="viewController">
@@ -14,38 +14,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="zcp-bj-32m">
-                            <rect key="frame" x="0.0" y="64" width="600" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xm6-sH-aTY">
-                                    <rect key="frame" x="8" y="15" width="288" height="30"/>
-                                    <state key="normal" title="Edit"/>
-                                    <connections>
-                                        <action selector="toggleEditingMode:" destination="cOm-84-g6I" eventType="touchUpInside" id="56a-F8-opP"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-h8-63D">
-                                    <rect key="frame" x="304" y="15" width="288" height="30"/>
-                                    <state key="normal" title="Add"/>
-                                    <connections>
-                                        <action selector="addNewItem:" destination="cOm-84-g6I" eventType="touchUpInside" id="L4v-ti-Thh"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="Xm6-sH-aTY" firstAttribute="centerY" secondItem="zcp-bj-32m" secondAttribute="centerY" id="9nx-1V-kNZ"/>
-                                <constraint firstItem="Xm6-sH-aTY" firstAttribute="leading" secondItem="zcp-bj-32m" secondAttribute="leading" constant="8" id="KIa-If-heN"/>
-                                <constraint firstItem="zHl-h8-63D" firstAttribute="width" secondItem="Xm6-sH-aTY" secondAttribute="width" id="Nsd-BV-gg7"/>
-                                <constraint firstItem="zHl-h8-63D" firstAttribute="centerY" secondItem="zcp-bj-32m" secondAttribute="centerY" id="axe-R4-Nrq"/>
-                                <constraint firstAttribute="trailing" secondItem="zHl-h8-63D" secondAttribute="trailing" constant="8" id="ieG-vO-QJ4"/>
-                                <constraint firstItem="zHl-h8-63D" firstAttribute="leading" secondItem="Xm6-sH-aTY" secondAttribute="trailing" constant="8" id="p99-Js-JxD"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="65" id="0qx-dR-Mxw" customClass="ItemCell" customModule="BNR_Homepwner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="152" width="600" height="65"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0qx-dR-Mxw" id="9rY-Cm-DiE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -93,7 +64,13 @@
                             <outlet property="delegate" destination="cOm-84-g6I" id="7vu-Sj-wTc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="898-7M-J0c"/>
+                    <navigationItem key="navigationItem" title="Homepwner" id="898-7M-J0c">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uV9-Mc-Sxl">
+                            <connections>
+                                <action selector="addNewItem:" destination="cOm-84-g6I" id="HrA-kk-Jo3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFv-nT-nYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

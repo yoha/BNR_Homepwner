@@ -16,22 +16,11 @@ class ItemsTableViewController: UITableViewController {
     
     // MARK: - IBAction Methods
     
-    @IBAction func addNewItem(sender: UIButton) {
+    @IBAction func addNewItem(sender: UIBarButtonItem) {
         let newItem = self.itemStore.createItem()
         if let validIndexOfNewItem = self.itemStore.allItems.indexOf(newItem) {
             let indexPathOfNewItem = NSIndexPath(forRow: validIndexOfNewItem, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPathOfNewItem], withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-    }
-    
-    @IBAction func toggleEditingMode(sender: UIButton) {
-        if self.editing {
-            sender.setTitle("Edit", forState: UIControlState.Normal)
-            self.setEditing(false, animated: true)
-        }
-        else {
-            sender.setTitle("Done", forState: .Normal)
-            self.setEditing(true, animated: true)
         }
     }
     
@@ -99,14 +88,10 @@ class ItemsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        
-        let customInsets = UIEdgeInsets(top: statusBarHeight, left: 0.0, bottom: 0.0, right: 0.0)
-        self.tableView.contentInset = customInsets
-        self.tableView.scrollIndicatorInsets = customInsets
-        
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 65
+        
+        self.navigationItem.leftBarButtonItem = editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {

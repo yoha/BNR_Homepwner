@@ -25,7 +25,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Stored Properties
     
-    var item: Item!
+    var item: Item! {
+        didSet {
+            self.navigationItem.title = item.name
+        }
+    }
     
     // MARK: - Computed Properties
     
