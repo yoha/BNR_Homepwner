@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let itemStore = ItemStore()
         
         // Access the ItemsTableViewController and set its item store
-        guard let validWindow = self.window, let validItemsTableViewController = validWindow.rootViewController as? ItemsTableViewController else { return true }
+        guard let validWindow = self.window, let validNavigationController = validWindow.rootViewController as? UINavigationController, let validItemsTableViewController = validNavigationController.topViewController as? ItemsTableViewController else { return false }
         validItemsTableViewController.itemStore = itemStore
         
         return true
