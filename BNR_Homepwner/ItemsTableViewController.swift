@@ -109,6 +109,12 @@ class ItemsTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 65
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.reloadData()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard segue.identifier == "segueToDetailViewController" else { return }
         guard let tappedRow = self.tableView.indexPathForSelectedRow?.row else { return }
