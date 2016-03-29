@@ -23,6 +23,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    @IBAction func unwindToDetailViewController(segue: UIStoryboardSegue) {
+        guard segue.identifier == "unwindToDetailViewController" else { return }
+        guard let validDatePickerViewController = segue.sourceViewController as? DatePickerViewController else { return }
+        self.item.dateCreated = validDatePickerViewController.date
+    }
+    
     // MARK: - Stored Properties
     
     var item: Item! {
@@ -79,6 +85,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         self.item.valueInDollars = value.integerValue
         
         self.view.endEditing(true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard segue.identifier == "segueToDatePickerViewController" else { return }
+        guard let validDatePickerViewController = segue.destinationViewController as? DatePickerViewController else { return }
+        validDatePickerViewController.date = self.item.dateCreated
     }
     
     // MARK: - UITextFieldDelegate Methods
