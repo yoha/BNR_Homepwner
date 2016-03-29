@@ -61,6 +61,7 @@ class ItemsTableViewController: UITableViewController {
             let alertController = UIAlertController(title: "Delete \(itemToBeDeleted.name)", message: "Are you sure you want to delete this item?", preferredStyle: UIAlertControllerStyle.ActionSheet)
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
             let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: { [unowned self] (_) -> Void in
+                self.imageStore.deleteImageForKey(itemToBeDeleted.itemKey)
                 self.itemStore.deleteItem(itemToBeDeleted)
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             })

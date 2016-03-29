@@ -108,6 +108,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         guard let validSelectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         self.imageView.image = validSelectedImage
+        self.imageStore.setImage(validSelectedImage, forKey: self.item.itemKey)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
