@@ -81,6 +81,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         self.serialNumberTextField.text = self.item.serialNumber
         self.valueTextField.text = self.numberFormatter.stringFromNumber(self.item.valueInDollars)
         self.dateLabel.text = self.dateFormatter.stringFromDate(self.item.dateCreated)
+        
+        let validItemKey = self.item.itemKey
+        guard let validCachedImage = self.imageStore.getImageForKey(validItemKey) else { return }
+        self.imageView.image = validCachedImage
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
