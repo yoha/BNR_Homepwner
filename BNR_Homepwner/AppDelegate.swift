@@ -16,12 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-        // Create an ItemStore
         let itemStore = ItemStore()
+        
+        let imageStore = ImageStore()
         
         // Access the ItemsTableViewController and set its item store
         guard let validWindow = self.window, let validNavigationController = validWindow.rootViewController as? UINavigationController, let validItemsTableViewController = validNavigationController.topViewController as? ItemsTableViewController else { return false }
         validItemsTableViewController.itemStore = itemStore
+        validItemsTableViewController.imageStore = imageStore
         
         return true
     }

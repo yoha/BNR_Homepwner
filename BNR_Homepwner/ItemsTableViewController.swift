@@ -13,6 +13,7 @@ class ItemsTableViewController: UITableViewController {
     // MARK: - Stored Properties
     
     var itemStore: ItemStore!
+    var imageStore: ImageStore!
     
     // MARK: - IBAction Methods
     
@@ -106,5 +107,6 @@ class ItemsTableViewController: UITableViewController {
         let associatedItem = self.itemStore.allItems[tappedRow]
         guard let validDetailViewController = segue.destinationViewController as? DetailViewController else { return }
         validDetailViewController.item = associatedItem
+        validDetailViewController.imageStore = self.imageStore
     }
 }

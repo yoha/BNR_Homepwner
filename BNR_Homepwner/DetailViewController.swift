@@ -45,6 +45,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
     }
     
+    var imageStore: ImageStore!
+    
     // MARK: - Computed Properties
     
     let numberFormatter: NSNumberFormatter = {
