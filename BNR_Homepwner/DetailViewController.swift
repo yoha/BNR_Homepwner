@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - IBOutlet Properties
     
@@ -31,6 +31,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func takePicture(sender: AnyObject) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) ? .Camera : .PhotoLibrary
+        imagePickerController.delegate = self
+        self.presentViewController(imagePickerController, animated: true, completion: nil)
     }
     
     // MARK: - Stored Properties
@@ -95,6 +99,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         guard segue.identifier == "segueToDatePickerViewController" else { return }
         guard let validDatePickerViewController = segue.destinationViewController as? DatePickerViewController else { return }
         validDatePickerViewController.date = self.item.dateCreated
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        guard let validSelectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        self.imageView.image = validSelectedImage
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - UITextFieldDelegate Methods
