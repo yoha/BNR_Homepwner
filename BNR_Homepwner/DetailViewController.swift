@@ -38,6 +38,18 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         self.presentViewController(imagePickerController, animated: true, completion: nil)
     }
     
+    @IBAction func removeImage(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Delete this image", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let deleteAlertAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { [unowned self] (_) -> Void in
+            self.imageStore.deleteImageForKey(self.item.itemKey)
+            self.imageView.image = nil
+        }
+        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(deleteAlertAction)
+        alertController.addAction(cancelAlertAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - Stored Properties
     
     var item: Item! {
