@@ -12,9 +12,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlet Properties
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var serialNumberTextField: UITextField!
-    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var nameTextField: CustomTextField!
+    @IBOutlet weak var serialNumberTextField: CustomTextField!
+    @IBOutlet weak var valueTextField: CustomTextField!
     @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: - IBAction Methods
