@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var serialNumberTextField: CustomTextField!
     @IBOutlet weak var valueTextField: CustomTextField!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - IBAction Methods
     
@@ -27,6 +28,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         guard segue.identifier == "unwindToDetailViewController" else { return }
         guard let validDatePickerViewController = segue.sourceViewController as? DatePickerViewController else { return }
         self.item.dateCreated = validDatePickerViewController.date
+    }
+    
+    @IBAction func takePicture(sender: AnyObject) {
     }
     
     // MARK: - Stored Properties
