@@ -33,6 +33,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBAction func takePicture(sender: AnyObject) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) ? .Camera : .PhotoLibrary
+        imagePickerController.allowsEditing = true
         imagePickerController.delegate = self
         self.presentViewController(imagePickerController, animated: true, completion: nil)
     }
@@ -111,7 +112,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     // MARK: - UIImagePickerControllerDelegate Methods
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        guard let validSelectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        guard let validSelectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         self.imageView.image = validSelectedImage
         self.imageStore.setImage(validSelectedImage, forKey: self.item.itemKey)
         self.dismissViewControllerAnimated(true, completion: nil)
