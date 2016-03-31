@@ -18,14 +18,33 @@ class ImageStore {
     
     func setImage(image: UIImage, forKey key: String) {
         self.cache.setObject(image, forKey: key)
+        
+        let imageURL = self.getImageURLForKey(key)
+        guard let validImageData = UIImageJPEGRepresentation(image, 0.5) else { return }
+        validImageData.writeToURL(imageURL, atomically: true)
     }
     
     func getImageForKey(key: String) -> UIImage? {
-        return self.cache.objectForKey(key) as? UIImage
+        if let validCacheImage = self.cache.objectForKey(key) as? UIImage {
+            return validCacheImage
+        }
+        
+        let imageURL = self.getImageURLForKey(key)
+        guard let imageFromDisk = UIImage(contentsOfFile: imageURL.path!) else { return nil }
+        self.cache.setObject(imageFromDisk, forKey: key)
+        return imageFromDisk
+    }
+    
+    func getImageURLForKey(key: String) -> NSURL {
+        let documentDirectory = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first!
+        return documentDirectory.URLByAppendingPathComponent(key)
     }
     
     func deleteImageForKey(key: String) {
         self.cache.removeObjectForKey(key)
+        
+        let imageURL = self.getImageURLForKey(key)
+        NSFileManager.defaultManager().removeItemAtURL(imageURL)
     }
 }
 
