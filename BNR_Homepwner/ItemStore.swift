@@ -9,7 +9,14 @@
 import UIKit
 
 class ItemStore {
+    
+    // MARK: - Stored Properties
+    
     var allItems = [Item]()
+    let itemArchiveUrl: NSURL = {
+        let documentDirectory = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first!
+        return documentDirectory.URLByAppendingPathComponent("items.archive")
+    }()
     
     // MARK: - Helper Methods
     
