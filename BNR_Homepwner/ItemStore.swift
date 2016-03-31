@@ -18,6 +18,13 @@ class ItemStore {
         return documentDirectory.URLByAppendingPathComponent("items.archive")
     }()
     
+    // MARK: - Designated Initalizer
+    
+    init() {
+        guard let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(self.itemArchiveUrl.path!) as? [Item] else { return }
+        self.allItems = archivedItems
+    }
+    
     // MARK: - Helper Methods
     
     func createItem() -> Item {
@@ -43,5 +50,10 @@ class ItemStore {
         
         // Insert item in array at new location
         self.allItems.insert(movedItem, atIndex: toIndex)
+    }
+    
+    func saveChanges() -> Bool {
+        print("Saving items to: \(self.itemArchiveUrl.path!)")
+        return NSKeyedArchiver.archiveRootObject(self.allItems, toFile: self.itemArchiveUrl.path!)
     }
 }
