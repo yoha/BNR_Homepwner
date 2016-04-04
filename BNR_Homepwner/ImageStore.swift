@@ -44,7 +44,12 @@ class ImageStore {
         self.cache.removeObjectForKey(key)
         
         let imageURL = self.getImageURLForKey(key)
-        NSFileManager.defaultManager().removeItemAtURL(imageURL)
+        do {
+            try NSFileManager.defaultManager().removeItemAtURL(imageURL)
+        }
+        catch {
+            print("The following error has occured: \(error)")
+        }
     }
 }
 
